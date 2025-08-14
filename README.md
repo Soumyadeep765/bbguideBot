@@ -1,82 +1,84 @@
-# 📚 bbguideBot — Telegram Learning & Guide Bot
+# bbguiderBot - chat bot
+It is repository for chat bot: [@bbguiderBot](https://t.me/bbguiderBot)
 
-![preview](Blue%20And%20White%20Digital%20Background%20Gradient%20Jamboard%20Background.png)
+## What it is?
+This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
 
-A **Telegram learning bot** built for [Bots.Business](https://bots.business) that delivers **step-by-step lessons**, **quizzes**, and **final tests** — all fully manageable from an **in-bot admin panel**.
+[Bots.Business](https://bots.business) - it is probably the first CBPaaS - Chat Bot Platform as a Service.
 
----
+A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
 
-## ✨ Features
+## Create your own bot for Telegram from this Git repo
 
-- **Interactive Lessons** — Multi-step guides with text, media, and navigation.
-- **Quizzes & Final Tests** — Engage users with tasks/tests and track scores.
-- **One-Command Admin Setup** — `/setup` opens a menu to update lessons, tasks, metadata, and final tests.
-- **Web Dashboard** — (`dashWeb/`) provides an optional browser-based interface via Telegram WebApp.
-- **No-Code Content Editing** — All lessons, quizzes, and bot metadata can be updated from the admin panel or Google Sheets.
-- **Progress Tracking** — Users can resume lessons/tests exactly where they left off.
+How to create bot?
+1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
+2. Create bot in App and add Secret Token
+3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
+4. Do import for this git repo
 
----
+Now you can talk with yours new Telegram Bot
 
-## 🚀 Getting Started
+See [more](https://help.bots.business/getting-started)
 
-### 1. Import into Bots.Business
-1. Create a bot at [Bots.Business](https://bots.business)
-2. Import all files from this repository into your bot project.
+## Commands - in commands folder
+File name - it is command name (Bot it can be rewritten in command description)
 
-### 2. Configure Required Settings
-- Open the `@` command in your bot.
-- Add:
-  - **Telegram IDs** to `ADMINS` (multiple admins supported) *(required)*
-  - **Google Sheet ID** in `SHEET_ID` — [How to get it](https://knowsheets.com/how-to-get-the-id-of-a-google-sheet/) *(required)*
-  - Page GIDs (`TASK_GID`, `META_GID`, `FINAL_TASKS_GID`, etc.) for lessons, tasks, metadata, and tests.
+Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
 
-### 3. Run `/setup`
-Launches the **Admin Panel** with:
-- **Update Lessons** → `/setupLesson`
-- **Update Tasks** → `/setupTasks`
-- **Update Bot Meta** → `/setupMeta`
-- **Update Final Tests** → `/setupFinalTask`
+### Command description
+It is file header:
 
-From here, create and edit all content without touching the code.
+    /*CMD
+      command: /test
+      help: this is help for ccommand
+      need_reply: [ true or false here ]
+      auto_retry_time: [ time in sec ]
+      answer: it is example answer for /test command
+      keyboard: button1, button2
+      aliases: /test2, /test3
+    CMD*/
 
-### 4. Update Optional Fields
-In the `@` command, adjust reward settings as needed:
-```js
-let reward_currency = "BP";
-let reward_per_lesson = 45;
-let reward_per_lesson_task = 55;
-let reward_final_test = 150;
-```
+See [more](https://help.bots.business/commands)
 
----
+### Command body
+It is command code in JavaScript.
+Use Bot Java Script for logic in command.
 
-## 🛠 User Commands
-- `/start` — Begin the guide or resume progress.
-- `/help` — Display help and available commands.
-- Lessons & tests are delivered step-by-step.
-- Scores & progress are automatically saved.
-- Final test becomes available after completing all lessons.
-- WebApp shows user statistics & leaderboard.
+For example:
+> Bot.sendMessage(2+2);
 
----
+See [more](https://help.bots.business/scenarios-and-bjs)
 
-## 🌐 Status Web Dashboard
-`dashWeb/` includes:
-- `/webApi` — Webhook command serving data for the dashboard.
-- `index.html` — WebApp front-end.
-- `index` — Renders HTML and passes data.
 
-Host using Bots.Business WebApp features.
+## Libraries - in libs folder
+You can store common code in the libs folder. File name - it is library name.
 
----
+For example code in myLib.js:
 
-## 🧩 Tech Stack
-1. **Bb Official Webhook Library** — API for serving leaderboard & stats.
-2. **Bots.Business WebApp** — Displays user stats & global leaderboard.
-3. **TopBoardLib** — Tracks global rankings.
-4. **User & Bot Properties** — Store user and bot data.
+    function hello(){ Bot.sendMessage("Hello from lib!") }
+    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
 
----
+    publish({
+      sayHello: hello,
+      sayGoodbyeTo: goodbye
+    })
 
-## 📜 License
-MIT License — free to use, modify, and distribute.
+then you can run in any bot's command:
+
+    Libs.myLib.hello()
+    Libs.myLib.sayGoodbyeTo("Alice")
+
+See [more](https://help.bots.business/git/library)
+
+## Other bots example
+See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) or in the [Bot Store](https://bots.business/)
+
+
+## Other help
+[Help.bots.business](https://help.bots.business)
+
+## API
+See [API](https://api.bots.business/docs#/docs/summary)
+
+
+![](https://bots.business/images/web-logo.png)
