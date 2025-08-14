@@ -4,6 +4,8 @@
 
 A **Telegram learning bot** built for [Bots.Business](https://bots.business) that delivers **step-by-step lessons**, **quizzes**, and **final tests** — all fully manageable from an **in-bot admin panel**.
 
+Test our demo bot at **[@bbguiderBot](https://t.me/bbguiderBot)**
+
 ---
 
 ## ✨ Features
