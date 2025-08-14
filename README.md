@@ -9,9 +9,9 @@ A **Telegram learning bot** built for [Bots.Business](https://bots.business) tha
 - **Interactive Lessons** — Create multi-step guides with text, media, and navigation.
 - **Quizzes & Final Tests** — Engage users with tasks/tests and track scores.
 - **One-Command Admin Setup** — `/setup` opens a menu to update lessons, tasks, metadata, and final tests.
-- **Web Dashboard** — (`dashWeb/`) provides an optional browser-based interface.
-- **Configurable Without Coding** — All content can be created and edited via the admin panel.
-- **Progress Tracking** — Users can resume lessons/tests from where they left off.
+- **Web Dashboard** — (`dashWeb/`) provides an optional browser-based interface via telegram Webapp.
+- **Configurable Without Coding** — All content can be created and edited via the admin panel and google sheets.
+- **Progress Tracking** — Users can resume lessons/tests from where they left off. Let them continue learning without worry about what they finished yesterday.
 
 ---
 
@@ -26,7 +26,7 @@ A **Telegram learning bot** built for [Bots.Business](https://bots.business) tha
 - Add all configarations : 
   - Add your **Telegram ID's** as `ADMINS`, you can add multiple telegram ID's as bot admin (required)*
   - Add your google sheet id in `SHEET_ID` , if you don't know how to get [See it](https://knowsheets.com/how-to-get-the-id-of-a-google-sheet/) (required)*
-  - Now add all pages ids as GID , update `TASK_GID`, `META_GID`, `FINAL_TASKS_GID` (required)
+  - Now add all pages ids as GID , update `TASK_GID`, `META_GID`, `FINAL_TASKS_GID` etc.
 
 ### 3. Run `/setup`
 This opens the **Admin Panel** with buttons:
@@ -38,7 +38,15 @@ This opens the **Admin Panel** with buttons:
 From here, you can create and edit all lessons, quizzes, and metadata.
 
 ### 4. Update optinal fields 
-In @ command you can upadate optinal 
+In @ command you can upadate optinal thing's 
+```js
+//reward settings 
+let reward_currency = "BP";
+let reward_per_lesson = 45;
+let reward_per_lesson_task = 55;
+let reward_final_test = 150;
+```
+> Update as you need 🙂
 
 ---
 
