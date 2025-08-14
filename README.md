@@ -1,5 +1,5 @@
 # 📚 bbguideBot — Telegram Learning & Guide Bot
-
+![preview](Blue%20And%20White%20Digital%20Background%20Gradient%20Jamboard%20Background.png)
 A **Telegram learning bot** built for [Bots.Business](https://bots.business) that delivers **step-by-step lessons**, **quizzes**, and **final tests** — all fully manageable from an **in-bot admin panel**.
 
 ---
