@@ -77,6 +77,7 @@ Host using Bots.Business WebApp features.
 2. **Bots.Business WebApp** — Displays user stats & global leaderboard.
 3. **TopBoardLib** — Tracks global rankings.
 4. **User & Bot Properties** — Store user and bot data.
+5. **Google sheets** - to store Lessons, tasks, quiz and bot info, **[Demo sheet](https://docs.google.com/spreadsheets/d/1BDEvTqTpTWRSZf36ht41tokvfXIjPa-73CN-UNCgtSU/edit?usp=drivesdk)**
 
 ---
 
