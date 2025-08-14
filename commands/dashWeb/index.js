@@ -18,5 +18,8 @@ CMD*/
 
 
 WebApp.render({
-  template: "index.html"
+  template: "index.html",
+  options: {
+    ...options
+  }
 });

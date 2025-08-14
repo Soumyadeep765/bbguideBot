@@ -16,14 +16,7 @@
   group: 
 CMD*/
 
-function getNextLessonId(currentId) {
-  let allLessons = Bot.getProp("all_lesson") || [];
-  let idx = allLessons.indexOf(currentId);
-  if (idx >= 0 && idx < allLessons.length - 1) {
-    return allLessons[idx + 1];
-  }
-  return null; // no next lesson to start automatically
-}
+
 let lessonId = params;
 let nextLessonId = getNextLessonId(lessonId);
 if (!lessonId) {
@@ -43,16 +36,12 @@ Api.editMessageText({
   message_id: request.message.message_id,
   text: `🚀 Starting *Lesson ${lessonId}* now! Good luck!`,
   parse_mode: "Markdown",
-  reply_markup: {
-    inline_keyboard: [
-      [{ text: "⬅ Back to Home", callback_data: "/start" }]
-    ]
-  }
 });
 
 // Optionally trigger the first step immediately:
 Bot.runCommand(`/startLesson`);
 } else {
+User.setProp("lesson_completed_with", lessonId) //for marked that user have completed the last lesson, abd track last 8d to
 Api.editMessageText({
   chat_id: chat.chatId,
   message_id: request.message.message_id,

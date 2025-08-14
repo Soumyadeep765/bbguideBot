@@ -94,13 +94,13 @@ function parseQuiz(csvText) {
 
     return grouped;
 }
-
+//Bot.inspect(content)
 const parsed = parseQuiz(content); //retrun an json object 
 
 for (const [lessonId, tasks] of Object.entries(parsed)) {
   let task = tasks?.tasks
   const key = `task:${lessonId}`;
-  Bot.inspect(task)
+  
   Bot.setProp(key, task, "json");
   Api.sendMessage({
     text: `✅ ${key} saved with ${task.length} quizzes.`

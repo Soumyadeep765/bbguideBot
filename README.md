@@ -1,5 +1,5 @@
-# Test343552532bot - chat bot
-It is repository for chat bot: [@Test343552532bot](https://t.me/Test343552532bot)
+# bbguiderBot - chat bot
+It is repository for chat bot: [@bbguiderBot](https://t.me/bbguiderBot)
 
 ## What it is?
 This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
