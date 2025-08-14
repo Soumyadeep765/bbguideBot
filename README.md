@@ -21,11 +21,12 @@ A **Telegram learning bot** built for [Bots.Business](https://bots.business) tha
 - Create a bot at [Bots.Business](https://bots.business)
 - Import all files from this repository
 
-### 2. Add Yourself as Admin
+### 2. Configure required things
 - Open `@` command
 - Add all configarations : 
   - Add your **Telegram ID's** as `ADMINS`, you can add multiple telegram ID's as bot admin (required)*
   - Add your google sheet id in `SHEET_ID` , if you don't know how to get [See it](https://knowsheets.com/how-to-get-the-id-of-a-google-sheet/) (required)*
+  - Now add all pages ids as GID , update `TASK_GID`, `META_GID`, `FINAL_TASKS_GID` (required)
 
 ### 3. Run `/setup`
 This opens the **Admin Panel** with buttons:
@@ -36,6 +37,9 @@ This opens the **Admin Panel** with buttons:
 
 From here, you can create and edit all lessons, quizzes, and metadata.
 
+### 4. Update optinal fields 
+In @ command you can upadate optinal 
+
 ---
 
 ## 🛠 Usage for Users
@@ -45,10 +49,11 @@ From here, you can create and edit all lessons, quizzes, and metadata.
 
 ---
 
-## 🌐 Optional Web Dashboard
+## 🌐 Status Web Dashboard
 `dashWeb/` contains:
-- `_webApi.js` → API endpoints
-- `index.html.js` & `index.js` → Dashboard UI
+- `/webApi` → Webhoook command to serve data in dashboard web
+- `index.html` → Website html codes containts here
+- `index` → to render html and pass
 Can be hosted via Bots.Business web app feature.
 
 ---
