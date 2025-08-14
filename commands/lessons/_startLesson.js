@@ -17,7 +17,8 @@
 CMD*/
 
 let current_lesson = User.getProp("current_ongoing_lesson");
-
+let lesson_completed_with = User.getProp("lesson_completed_with");
+let user_started_learning = User.getProp("user_started_learning")|| false;
 if (!current_lesson || !user_started_learning) {
   current_lesson = "L1"; // Entry point
   User.setProp("user_started_learning", true);
@@ -26,6 +27,48 @@ if (!current_lesson || !user_started_learning) {
 if(params){
   current_lesson = params
 }
+// Helper function to chunk array into smaller arrays of given size
+function chunkArray(arr, size) {
+  let result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
+if ((lesson_completed_with && !params) && lesson_completed_with == getLastLessonId()) {
+  // Get all lessons list
+  let allLessons = Bot.getProp("all_lesson") || [];
+  
+  // Build dynamic lesson buttons
+  let lessonButtons = allLessons.map(id => {
+    return {
+      text: id.replace(/^L/, "Lesson "), // Replace "L" with "Lesson "
+      callback_data: `/startLesson ${id}`
+    };
+  });
+
+  // Build keyboard with lessons and Back to Home button
+  let keyboard = {
+    inline_keyboard: [
+      // Chunk lesson buttons into rows of 2 (optional)
+      ...chunkArray(lessonButtons, 2),
+      [
+        { text: "Back to Home 🔙", callback_data: "/start" }
+      ]
+    ]
+  };
+
+  Api.editMessageText({
+    chat_id: chat.chatId,
+    message_id: request.message.message_id,
+    text: "You Have Completed all Lessons, Want to retake any lesson? 🤔 Just choose from which lesson you want to start again:",
+    parse_mode: "Markdown",
+    reply_markup: keyboard
+  });
+  return;
+}
+
+
 let lesson = Bot.getProp(current_lesson);
 
 if (!lesson) {

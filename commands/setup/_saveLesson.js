@@ -17,7 +17,8 @@
 CMD*/
 
 if(!ADMINS.includes(user.telegramid)) return;
-if(! content) return;
+if(!content) return;
+
 function parseLesson(csvText, { parseJSONFields = ['extra'] } = {}) {
     const rows = [];
     let currentRow = [];
@@ -61,6 +62,15 @@ function parseLesson(csvText, { parseJSONFields = ['extra'] } = {}) {
     const headers = rows[0].map(header => header.trim());
     const result = { lessons: [] };
     let currentLesson = null;
+    let validationErrors = [];
+
+    // Validate headers
+    const requiredHeaders = ['id', 'lesson', 'Description', 'step', 'text'];
+    for (const reqHeader of requiredHeaders) {
+        if (!headers.includes(reqHeader)) {
+            validationErrors.push(`Missing required column: ${reqHeader}`);
+        }
+    }
 
     for (let i = 1; i < rows.length; i++) {
         const row = rows[i];
@@ -76,15 +86,23 @@ function parseLesson(csvText, { parseJSONFields = ['extra'] } = {}) {
                 try {
                     value = JSON.parse(value);
                 } catch (e) {
-                    
-Bot.sendMessage(`Failed to parse JSON in ${header}:`, value);
+                    Bot.sendMessage(`Failed to parse JSON in ${header}:`, value);
                 }
             }
 
             obj[header] = value;
         }
 
+        // Validate lesson fields
         if (obj.id && obj.lesson) {
+            if (!obj.Description) {
+                validationErrors.push(`Lesson ${obj.id} is missing description`);
+            }
+            
+            if (!obj.lesson.trim()) {
+                validationErrors.push(`Lesson ${obj.id} has empty name`);
+            }
+
             currentLesson = {
                 id: obj.id,
                 name: obj.lesson,
@@ -94,7 +112,12 @@ Bot.sendMessage(`Failed to parse JSON in ${header}:`, value);
             result.lessons.push(currentLesson);
         }
 
+        // Validate step fields
         if (currentLesson && obj.step) {
+            if (!obj.text.trim()) {
+                validationErrors.push(`Lesson ${currentLesson.id} step ${obj.step} has empty text`);
+            }
+            
             currentLesson.steps.push({
                 step: obj.step,
                 text: obj.text || '',
@@ -106,30 +129,50 @@ Bot.sendMessage(`Failed to parse JSON in ${header}:`, value);
         }
     }
 
+    if (validationErrors.length > 0) {
+        Api.sendMessage({
+            text: `❌ Validation errors found:\n${validationErrors.join('\n')}`
+        });
+        return { error: "Validation failed", details: validationErrors };
+    }
+
     return result;
 }
-//Bot.inspect(parseLesson(content))
-// Parse lessons
-const parsed = parseLesson(content); // returns a JSON with lessons array
+
+const parsed = parseLesson(content);
+
+if (parsed.error) {
+    Api.sendMessage({
+        text: `❌ Failed to parse lessons due to validation errors.`
+    });
+    return;
+}
+
+if (!parsed.lessons || parsed.lessons.length === 0) {
+    Api.sendMessage({
+        text: `❌ No valid lessons found in the CSV.`
+    });
+    return;
+}
 
 // Collect all lesson IDs
 const lessonIds = [];
 
 for (const lesson of parsed.lessons) {
-  const key = lesson.id;
-  const value = lesson;
+    const key = lesson.id;
+    const value = lesson;
 
-  Bot.setProp(key, value);
-  lessonIds.push(key);
+    Bot.setProp(key, value);
+    lessonIds.push(key);
 
-  Api.sendMessage({
-    text: `✅ ${key} saved.`
-  });
+    Api.sendMessage({
+        text: `✅ ${key} saved.`
+    });
 }
 
 // Store all lesson IDs in one prop
 Bot.setProp("all_lesson", lessonIds, "json");
 
 Api.sendMessage({
-  text: `✅ ${parsed.lessons.length} lessons saved via setProp.\n📦 All IDs: ${JSON.stringify(lessonIds)}`
+    text: `✅ ${parsed.lessons.length} lessons saved via setProp.\n📦 All IDs: ${JSON.stringify(lessonIds)}`
 });

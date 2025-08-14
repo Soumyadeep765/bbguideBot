@@ -40,6 +40,7 @@ if (!stepData) {
 let contentText = `📖 *Step ${stepIndex} of ${lesson.steps.length}*\n\n${stepData.text}`
   .replace(/\*\*(.*?)\*\*/g, '*$1*')
   .replace(/__(.*?)__/g, '_$1_');
+  
 if (stepData.video) contentText += `\n\n🎥 [Watch Tutorial](${stepData.video})`;
 if (stepData.help) contentText += `\n💡 [Help Article](${stepData.help})`;
 

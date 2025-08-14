@@ -3,7 +3,7 @@
   help: 
   need_reply: false
   auto_retry_time: 
-  folder: lessons
+  folder: tasks
 
   <<ANSWER
 
@@ -23,12 +23,21 @@ let index = parseInt(indexStr);
 let tasks = Bot.getProp(`task:${lessonId}`);
 if (!tasks || !tasks[index]) return;
 
-let text = `📝 *Question ${index + 1} of ${tasks.length}*\n\n${tasks[index].question}`;
-let keyboard = { inline_keyboard: [] };
-
+// Build question text with numbered options
+let text = `📝 *Question ${index + 1} of ${tasks.length}*\n\n${tasks[index].question}\n\n`;
 tasks[index].answers.forEach((ans, i) => {
+  text += `${i + 1}. ${ans}\n`;
+});
+
+// Build keyboard with "1 - Option" style
+let keyboard = { inline_keyboard: [] };
+tasks[index].answers.forEach((ans, i) => {
+  let optionNumber = i + 1;
   keyboard.inline_keyboard.push([
-    { text: ans, callback_data: `/answerTest ${lessonId}:${index}:${i}` }
+    { 
+      text: `${optionNumber} - ${ans}`, 
+      callback_data: `/answerTest ${lessonId}:${index}:${i}` 
+    }
   ]);
 });
 

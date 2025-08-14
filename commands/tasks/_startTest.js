@@ -3,7 +3,7 @@
   help: 
   need_reply: false
   auto_retry_time: 
-  folder: lessons
+  folder: tasks
 
   <<ANSWER
 
@@ -17,7 +17,7 @@
 CMD*/
 
 // /startTest command handler
-let lessonId = params.trim();
+let lessonId = params;
 if (!lessonId) {
   Api.answerCallbackQuery({
     callback_query_id: request.id,
@@ -49,12 +49,22 @@ showQuestion(tasks[0], lessonId, 0);
 
 // --- Helper ---
 function showQuestion(q, lessonId, index) {
-  let text = `📝 *Question ${index + 1} of ${tasks.length}*\n\n${q.question}`;
-  let keyboard = { inline_keyboard: [] };
-
+  // Build question text with numbered options
+  let text = `📝 *Question ${index + 1} of ${tasks.length}*\n\n${q.question}\n\n`;
+  
   q.answers.forEach((ans, i) => {
+    text += `${i + 1}. ${ans}\n`; // Adds "1. Option" to the question text
+  });
+
+  // Build buttons with numbered prefix
+  let keyboard = { inline_keyboard: [] };
+  q.answers.forEach((ans, i) => {
+    let optionNumber = i + 1;
     keyboard.inline_keyboard.push([
-      { text: ans, callback_data: `/answerTest ${lessonId}:${index}:${i}` }
+      { 
+        text: `${optionNumber} - ${ans}`, 
+        callback_data: `/answerTest ${lessonId}:${index}:${i}` 
+      }
     ]);
   });
 

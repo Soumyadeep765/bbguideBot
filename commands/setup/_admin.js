@@ -25,7 +25,7 @@ if(!ADMINS.includes(user.telegramid)) return;
     ],
     [
       { text: "Update Bot Meta", callback_data: "/setupMeta" },
-      { text: "Update Final Tests", callback_data: "/setupTest" }
+      { text: "Update Final Tests", callback_data: "/setupFinalTask" }
     ]
   ];
   let adminText = `Welcome to admin panel choose what you want to do`

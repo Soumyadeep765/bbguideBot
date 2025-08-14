@@ -3,7 +3,7 @@
   help: 
   need_reply: false
   auto_retry_time: 
-  folder: lessons
+  folder: tasks
 
   <<ANSWER
 
@@ -47,6 +47,7 @@ let feedback = isCorrect
   : `❌ *Incorrect!*\nThe correct answer is: *${q.answers[q.correct_index - 1]}*`;
 
 let text = `📝 *Question ${index + 1} of ${tasks.length}*\n\n${q.question}\n\n${feedback}`;
+
 let keyboard = { inline_keyboard: [] };
 
 // If more questions, show "Next" button
