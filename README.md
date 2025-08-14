@@ -24,8 +24,8 @@ A **Telegram learning bot** built for [Bots.Business](https://bots.business) tha
 ### 2. Add Yourself as Admin
 - Open `@` command
 - Add all configarations : 
- - Add your **Telegram ID's** as `ADMINS`, you can add multiple telegram ID's as bot admin 
- - Add your google sheet id in `SHEET_ID` , if you don't know how to get (See it)[https://knowsheets.com/how-to-get-the-id-of-a-google-sheet/]
+ - Add your **Telegram ID's** as `ADMINS`, you can add multiple telegram ID's as bot admin (required)*
+ - Add your google sheet id in `SHEET_ID` , if you don't know how to get [See it](https://knowsheets.com/how-to-get-the-id-of-a-google-sheet/) (required)*
 
 ### 3. Run `/setup`
 This opens the **Admin Panel** with buttons:
