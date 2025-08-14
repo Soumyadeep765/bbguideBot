@@ -54,6 +54,10 @@ let reward_final_test = 150;
 - `/start` → Begin the guide or resume progress
 - Lessons & tests are delivered step-by-step
 - Scores and progress are automatically saved
+-  `/help` → Get help message with some Commands
+-  Give Final test if user finsihed all lessons.
+
+-  Webapp to serve user statistics and and global leaderboard 
 
 ---
 
@@ -66,5 +70,16 @@ Can be hosted via Bots.Business web app feature.
 
 ---
 
+## Tech Used
+### 1. Libs : 
+Used Bb official webhook library to create a API to serve data (leaderboard and user statistics) to Webapp 
+### 2. Webapp: 
+Used bot buisness official Webapp creation method to show user statistics and leaderboard 
+### 3. TopBoardLib : 
+Used this default installed lib to track global leaderboard.
+### 4. User and Bot prop : 
+used user and bot properties to store user and bot data.
+
+---
 ## 📜 License
 MIT License — free to use and modify.
