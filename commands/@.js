@@ -38,8 +38,9 @@ let reward_currency = "BP";
 let reward_per_lesson = 45;
 let reward_per_lesson_task = 55;
 let reward_final_test = 150;
-//let reward_per_ai_task = 50;
 //admin can decrease the reward and can give real BBP as reward for making bot attractive to users
+
+
 
 // a useful function to get next lesson id
 function getNextLessonId(currentId) {

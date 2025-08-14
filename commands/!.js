@@ -16,12 +16,17 @@
   group: 
 CMD*/
 
-//keep it blank for silent error fallback , good for production use
+// keep it blank for silent error fallback , good for production use
 
-//uncommont this below line for sending alert to admin
+// uncomment this block for sending alert to all admins
 /*
 let text = "Oops! Something went wrong 🥵\n\nPlease check the error tab to understand and resolve the issue.";
-Api.sendMessage({
-  text : text,
-  chat_id: ADMIN_IDS[0]
-})*/
+
+// Loop through all admin IDs and send alert
+ADMIN_IDS.forEach(adminId => {
+  Api.sendMessage({
+    text: text,
+    chat_id: adminId
+  });
+});
+*/
