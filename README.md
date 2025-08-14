@@ -15,23 +15,6 @@ A **Telegram learning bot** built for [Bots.Business](https://bots.business) tha
 
 ---
 
-## 📂 Project Structure
-
-```
-bot.json            # Bot configuration (title, settings, etc.)
-commands/           # All bot commands
-  _start.js         # Entry point for users
-  setup/            # Admin setup commands (/setup, /setupLesson, etc.)
-  lessons/          # Lesson flow commands
-  tasks/            # Quiz/test commands
-  finalTest/        # Final test commands
-  dashWeb/          # Web dashboard files
-libs/
-  Webhooks.js       # Webhook integrations
-```
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Import into Bots.Business
@@ -39,8 +22,10 @@ libs/
 - Import all files from this repository
 
 ### 2. Add Yourself as Admin
-- Open `bot.json` or `ADMINS` list in code
-- Add your **Telegram ID**
+- Open `@` command
+- Add all configarations : 
+ - Add your **Telegram ID's** as `ADMINS`, you can add multiple telegram ID's as bot admin 
+ - Add your google sheet id in `SHEET_ID` , if you don't know how to get (See it)[https://knowsheets.com/how-to-get-the-id-of-a-google-sheet/]
 
 ### 3. Run `/setup`
 This opens the **Admin Panel** with buttons:
