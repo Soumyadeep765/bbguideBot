@@ -62,7 +62,7 @@ let reward_final_test = 150;
 - WebApp shows user statistics & leaderboard.
 
 ### Flow to test 
-/start → continue learning (Inline button click) → learn how button ( to start lesson) → Next (for continuing learning with steps) → Finish (To finish the lesson at last step) → start test (start a test for the lesson you have just completed) → Answer questions and follow buttons (You will be rewarded id you perform good, if not score good try again 🙂)
+/start → continue learning (Inline button click) → learn how button ( to start lesson) → Next (for continuing learning with steps) → Finish (To finish the lesson at last step) → start test (start a test for the lesson you have just completed) → Answer questions and follow buttons (You will be rewarded id you perform good, if not score good try again 🙂) → like this complete all lessons and quizzes → Go back to home ( you can see a button give final task if you completed all lessons)
 
 > Complete all 2 lessons for final task 🙂
 
@@ -86,6 +86,7 @@ Host using Bots.Business WebApp features.
 5. **Google sheets** - to store Lessons, tasks, quiz and bot info, **[Demo sheet](https://docs.google.com/spreadsheets/d/1BDEvTqTpTWRSZf36ht41tokvfXIjPa-73CN-UNCgtSU/edit?usp=drivesdk)**
 
 ---
+
 
 ## 📜 License
 MIT License — free to use, modify, and distribute.
