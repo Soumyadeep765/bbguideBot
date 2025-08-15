@@ -16,7 +16,8 @@ Test our demo bot at **[@bbguiderBot](https://t.me/bbguiderBot)**
 - **Web Dashboard** — (`dashWeb/`) provides an optional browser-based interface via Telegram WebApp.
 - **No-Code Content Editing** — All lessons, quizzes, and bot metadata can be updated from the admin panel or Google Sheets.
 - **Progress Tracking** — Users can resume lessons/tests exactly where they left off.
-
+  
+> Test all features and complete full guide lessons , quizes and final for better experience 
 ---
 
 ## 🚀 Getting Started
@@ -59,6 +60,11 @@ let reward_final_test = 150;
 - Scores & progress are automatically saved.
 - Final test becomes available after completing all lessons.
 - WebApp shows user statistics & leaderboard.
+
+### Flow to test 
+/start → continue learning (Inline button click) → learn how button ( to start lesson) → Next (for continuing learning with steps) → Finish (To finish the lesson at last step) → start test (start a test for the lesson you have just completed) → Answer questions and follow buttons (You will be rewarded id you perform good, if not score good try again 🙂)
+
+> Complete all 2 lessons for final task 🙂
 
 ---
 
