@@ -147,7 +147,7 @@ The **dashWeb/** folder contains:
 - `index` — HTML render function
 
 > Example Preview  
-![Dashboard Preview](dashWeb.jpeg)
+![Dashboard Preview](dashWeb.jpg)
 
 ---
 
